@@ -58,6 +58,7 @@ public partial class GraphQLError
 [JsonSerializable(typeof(GraphQLResponse<GetConfigurationData>))]
 [JsonSerializable(typeof(GraphQLRequest<GetConfigurationVariables>))]
 [JsonSerializable(typeof(GetConfigurationConfiguration))]
+[JsonSerializable(typeof(GetConfigurationConfigurationOutputPathTransformers))]
 [JsonSerializable(typeof(GetFilesVariables))]
 [JsonSerializable(typeof(GetFilesData))]
 [JsonSerializable(typeof(GraphQLResponse<GetFilesData>))]
@@ -244,9 +245,7 @@ public static partial class GraphQLClient
                   configuration {
                     filesBlacklist
                     filesWhitelist
-                    inputPath
-                    outputPath
-                    inputPath {
+                    outputPathTransformers {
                       regex
                       replacement
                     }
@@ -541,17 +540,20 @@ public partial class GetConfigurationConfiguration
     [JsonPropertyName("filesWhitelist")]
     public required List<string> FilesWhitelist { get; set; }
 
-    [JsonPropertyName("inputPath")]
-    public List<object>? InputPath { get; set; }
-
-    [JsonPropertyName("outputPath")]
-    public string? OutputPath { get; set; }
-
-    [JsonPropertyName("inputPath")]
-    public List<object>? InputPath { get; set; }
+    [JsonPropertyName("outputPathTransformers")]
+    public List<GetConfigurationConfigurationOutputPathTransformers>? OutputPathTransformers { get; set; }
 
     [JsonPropertyName("css")]
     public List<object>? Css { get; set; }
+}
+
+public partial class GetConfigurationConfigurationOutputPathTransformers
+{
+    [JsonPropertyName("regex")]
+    public required string Regex { get; set; }
+
+    [JsonPropertyName("replacement")]
+    public required string Replacement { get; set; }
 }
 
 public partial class GetFilesData
