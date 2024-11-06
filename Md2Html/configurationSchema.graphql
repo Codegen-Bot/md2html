@@ -8,9 +8,27 @@ and prefer convention over configuration. That helps keep bots easy to use, focu
 and easy to refactor.
 """
 type Configuration {
-  """
-  It's best to add documentation strings for your fields, because they are displayed
-  when codegen.bot prompts the bot user for each value.
-  """
-  outputPath: String!
+    """
+    A whitelist that tells this bot which markdown files to convert
+    """
+    filesWhitelist: [String!]!
+    """
+    A blacklist that tells this bot which files that match the whitelist to still exclude from converting
+    """
+    filesBlacklist: [String!]!
+    """
+    Search / replace pairs to use on the markdown file path to determine the path of the output html file
+    """
+    outputPathTransformers: [Md2HtmlPathTransformer!]
+    css: [Md2HtmlCssRule!]
+}
+
+type Md2HtmlCssRule {
+    element: String!
+    class: String!
+}
+
+type Md2HtmlPathTransformer {
+    regex: String!
+    replacement: String!
 }

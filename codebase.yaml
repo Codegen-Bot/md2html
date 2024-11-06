@@ -1,1 +1,54 @@
 targetPath: .
+installs:
+- botId: bot://core/output
+  botVersion: 1.0.0
+- botId: bot://core/filesystem
+  botVersion: 1.0.0
+- botId: bot://core/log
+  botVersion: 1.0.0
+- botId: bot://core/ready
+  botVersion: 1.0.0
+- botId: bot://hub/dotnet/solution
+  botVersion: 0.0.1-alpha2
+  configuration:
+    outputPath: Md2Html
+  dependencies:
+  - botId: bot://core/output
+  - botId: bot://core/filesystem
+  - botId: bot://core/log
+  - botId: bot://core/ready
+- botId: bot://hub/.gitignore
+  botVersion: 0.0.1-alpha2
+  configuration:
+    outputPath: 
+  dependencies:
+  - botId: bot://core/output
+  - botId: bot://core/filesystem
+  - botId: bot://core/log
+  - botId: bot://core/ready
+- botId: bot://core/random
+  botVersion: 1.0.0
+- botId: bot://core/schema
+  botVersion: 1.0.0
+- botId: bot://parse/graphql
+  botVersion: 1.0.0
+- botId: bot://hub/dotnet/botfactory
+  botVersion: 0.0.1-alpha68
+  configuration:
+    id: bot://hub/md2html
+    language: CSHARP
+    outputPath: Md2Html
+    projectName: Md2Html
+    minimalWorkingExample: false
+    provideApi: false
+    dotnetVersion: DotNet8
+    copybots: []
+  dependencies:
+  - botId: bot://hub/dotnet/solution
+  - botId: bot://hub/.gitignore
+  - botId: bot://core/output
+  - botId: bot://core/filesystem
+  - botId: bot://core/random
+  - botId: bot://core/log
+  - botId: bot://core/schema
+  - botId: bot://parse/graphql

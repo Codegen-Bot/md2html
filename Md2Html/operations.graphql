@@ -1,5 +1,8 @@
 query GetConfiguration {
-  configuration {
-    outputPath
-  }
+    configuration {
+        filesBlacklist
+        filesWhitelist
+        outputPathTransformers { regex replacement }
+        css { element class }
+    }
 }
