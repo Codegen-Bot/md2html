@@ -244,6 +244,7 @@ public static partial class GraphQLClient
                   configuration {
                     filesBlacklist
                     filesWhitelist
+                    inputPath
                     outputPath
                   }
                 }
@@ -531,6 +532,9 @@ public partial class GetConfigurationConfiguration
 
     [JsonPropertyName("filesWhitelist")]
     public required List<string> FilesWhitelist { get; set; }
+
+    [JsonPropertyName("inputPath")]
+    public string? InputPath { get; set; }
 
     [JsonPropertyName("outputPath")]
     public string? OutputPath { get; set; }
