@@ -59,6 +59,7 @@ public partial class GraphQLError
 [JsonSerializable(typeof(GraphQLRequest<GetConfigurationVariables>))]
 [JsonSerializable(typeof(GetConfigurationConfiguration))]
 [JsonSerializable(typeof(GetConfigurationConfigurationOutputPathTransformers))]
+[JsonSerializable(typeof(GetConfigurationConfigurationCss))]
 [JsonSerializable(typeof(GetFilesVariables))]
 [JsonSerializable(typeof(GetFilesData))]
 [JsonSerializable(typeof(GraphQLResponse<GetFilesData>))]
@@ -544,7 +545,7 @@ public partial class GetConfigurationConfiguration
     public List<GetConfigurationConfigurationOutputPathTransformers>? OutputPathTransformers { get; set; }
 
     [JsonPropertyName("css")]
-    public List<object>? Css { get; set; }
+    public List<GetConfigurationConfigurationCss>? Css { get; set; }
 }
 
 public partial class GetConfigurationConfigurationOutputPathTransformers
@@ -554,6 +555,15 @@ public partial class GetConfigurationConfigurationOutputPathTransformers
 
     [JsonPropertyName("replacement")]
     public required string Replacement { get; set; }
+}
+
+public partial class GetConfigurationConfigurationCss
+{
+    [JsonPropertyName("element")]
+    public required string Element { get; set; }
+
+    [JsonPropertyName("class")]
+    public required string Class { get; set; }
 }
 
 public partial class GetFilesData
