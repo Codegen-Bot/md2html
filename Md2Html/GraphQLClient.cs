@@ -246,6 +246,14 @@ public static partial class GraphQLClient
                     filesWhitelist
                     inputPath
                     outputPath
+                    inputPath {
+                      regex
+                      replacement
+                    }
+                    css {
+                      element
+                      class
+                    }
                   }
                 }
                 """,
@@ -534,10 +542,16 @@ public partial class GetConfigurationConfiguration
     public required List<string> FilesWhitelist { get; set; }
 
     [JsonPropertyName("inputPath")]
-    public string? InputPath { get; set; }
+    public List<object>? InputPath { get; set; }
 
     [JsonPropertyName("outputPath")]
     public string? OutputPath { get; set; }
+
+    [JsonPropertyName("inputPath")]
+    public List<object>? InputPath { get; set; }
+
+    [JsonPropertyName("css")]
+    public List<object>? Css { get; set; }
 }
 
 public partial class GetFilesData
